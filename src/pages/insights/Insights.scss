@@ -17,6 +17,7 @@ GNU General Public License for more details, or get a copy at
 
 .statistics-container {
   padding: 16px;
+  margin-bottom: 120px;
 }
 
 .statistics-header {
@@ -114,4 +115,13 @@ GNU General Public License for more details, or get a copy at
 .chart-title {
   margin-bottom: 8px;
   font-weight: 500;
+}
+
+.info-banner-text {
+  margin-bottom: 1.5rem !important;
+  color: var(--text-secondary);
+  padding: 0.75rem;
+  background-color: var(--bg-tertiary);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent-blue);
 }

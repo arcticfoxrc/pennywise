@@ -13,7 +13,7 @@ GNU General Public License for more details, or get a copy at
 */
 
 import React, {useEffect, useRef, useState} from 'react';
-import {Box, Chip, Container, IconButton, Paper, Stack, Typography, useTheme, Button} from '@mui/material';
+import {Alert, Box, Chip, Container, IconButton, Paper, Stack, Typography, useTheme, Button} from '@mui/material';
 import {motion} from 'framer-motion';
 import {FileDownload, TrendingDown as TrendingDownIcon, TrendingUp as TrendingUpIcon} from '@mui/icons-material';
 import CloseIcon from '@mui/icons-material/Close';
@@ -450,57 +450,6 @@ const Insights: React.FC = () => {
         </motion.div>
       </Stack>
 
-      {/* Export Buttons Row */}
-      <Stack direction="row" spacing={2} sx={{ mt: 2, mb: 3 }}>
-        <motion.div
-          initial={{opacity: 0, y: 20}}
-          animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.3, delay: 0.3}}
-          style={{flex: 1}}
-        >
-          <Button
-            variant="contained"
-            fullWidth
-            startIcon={<FileDownload />}
-            onClick={() => exportAsXLSX(getFilteredExpenses(), timeRange)}
-            sx={{
-              backgroundColor: theme.palette.primary.main,
-              '&:hover': {
-                backgroundColor: theme.palette.primary.dark,
-              },
-              borderRadius: 2,
-              py: 1,
-            }}
-          >
-            Export XLSX
-          </Button>
-        </motion.div>
-
-        <motion.div
-          initial={{opacity: 0, y: 20}}
-          animate={{opacity: 1, y: 0}}
-          transition={{duration: 0.3, delay: 0.4}}
-          style={{flex: 1}}
-        >
-          <Button
-            variant="contained"
-            fullWidth
-            startIcon={<FileDownload />}
-            onClick={() => exportAsCSV(getFilteredExpenses(), timeRange)}
-            sx={{
-              backgroundColor: theme.palette.primary.main,
-              '&:hover': {
-                backgroundColor: theme.palette.primary.dark,
-              },
-              borderRadius: 2,
-              py: 1,
-            }}
-          >
-            Export CSV
-          </Button>
-        </motion.div>
-      </Stack>
-
       {/* Line Graph / Pie Chart based on selected chart type */}
       <Box className="line-chart-container">
         {lineChartData.length > 0 ? (
@@ -601,6 +550,63 @@ const Insights: React.FC = () => {
           </Paper>
         </Box>
       )}
+
+      {/* Info Banner */}
+      <Typography variant="body2" className="info-banner-text">
+        Reports are downloaded based on the selected range, current range is
+        <strong>{" "+ filterOptions.find(o => o.id === timeRange)?.label}</strong>
+      </Typography>
+
+      {/* Export Buttons Row */}
+      <Stack direction="row" spacing={2} sx={{ mt: 2, mb: 3 }}>
+        <motion.div
+          initial={{opacity: 0, y: 20}}
+          animate={{opacity: 1, y: 0}}
+          transition={{duration: 0.3, delay: 0.3}}
+          style={{flex: 1}}
+        >
+          <Button
+            variant="contained"
+            fullWidth
+            startIcon={<FileDownload />}
+            onClick={() => exportAsXLSX(getFilteredExpenses(), timeRange)}
+            sx={{
+              backgroundColor: theme.palette.primary.main,
+              '&:hover': {
+                backgroundColor: theme.palette.primary.dark,
+              },
+              borderRadius: 2,
+              py: 1,
+            }}
+          >
+            Export XLSX
+          </Button>
+        </motion.div>
+
+        <motion.div
+          initial={{opacity: 0, y: 20}}
+          animate={{opacity: 1, y: 0}}
+          transition={{duration: 0.3, delay: 0.4}}
+          style={{flex: 1}}
+        >
+          <Button
+            variant="contained"
+            fullWidth
+            startIcon={<FileDownload />}
+            onClick={() => exportAsCSV(getFilteredExpenses(), timeRange)}
+            sx={{
+              backgroundColor: theme.palette.primary.main,
+              '&:hover': {
+                backgroundColor: theme.palette.primary.dark,
+              },
+              borderRadius: 2,
+              py: 1,
+            }}
+          >
+            Export CSV
+          </Button>
+        </motion.div>
+      </Stack>
 
       {/* Floating Filter & Group By Buttons */}
       <div className="buttons-container">

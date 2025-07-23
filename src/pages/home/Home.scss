@@ -21,6 +21,7 @@ GNU General Public License for more details, or get a copy at
     position: relative;
     /* Add space for the filter button at bottom */
     padding: 20px 20px 80px;
+    margin-bottom: 150px; /* Ensure enough space for the filter panel */
 }
 
 /* Search styles */
@@ -436,9 +437,9 @@ GNU General Public License for more details, or get a copy at
     background-color: var(--accent-blue) !important;
     transition: background-color 0.3s ease, transform 0.3s ease !important;
 
-    &:hover {
-        background-color: var(--group-header-hover) !important;
-    }
+    //&:hover {
+    //    background-color: var(--group-header-hover) !important;
+    //}
 
     /* Add subtle pulse animation when state changes */
     &.state-changed {
