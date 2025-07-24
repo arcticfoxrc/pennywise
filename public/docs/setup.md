@@ -5,6 +5,7 @@ This guide will walk you through setting up the Arctic Fox project on a Linux en
 ## Prerequisites
 
 - **Firebase Blaze Plan**: To use this project, you'll need to enable the Firebase "Blaze" (pay-as-you-go) plan. This requires adding a billing account to your Firebase project, for which a credit card is mandatory.
+> **Note:** I have been using this project for tracking my expenses for the last 2 years, and I have rarely crossed the free tier limits. On a few occasions, I was billed ₹1-2 when I was testing Firestore with a high volume of requests. However, you can set up a billing budget to receive reminder emails, which helps ensure you stay within your desired spending limits.
 
 ## Minimum Technical Requirements
 
@@ -21,6 +22,7 @@ npm -v
 ```
 
 ## Getting Started
+
 
 ### Firebase Setup
 

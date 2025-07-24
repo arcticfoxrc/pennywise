@@ -127,8 +127,9 @@ PennyWise is built using a modern front-end architecture with the following key 
 
 ## Getting Started
 
-For detailed setup instructions, please refer to our setup guides:
-- [Setup project via Linux OS](./public/docs/setup_linux.md)
+For detailed setup instructions, please refer to our setup guide:
+- [Setup Instructions](./public/docs/setup.md)
+
 
 ## Roadmap
 
