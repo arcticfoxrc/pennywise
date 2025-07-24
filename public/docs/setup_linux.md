@@ -1,6 +1,10 @@
-# Arctic Fox Setup for Linux
+# PennyWise Setup for Linux
 
 This guide will walk you through setting up the Arctic Fox project on a Linux environment.
+
+## Prerequisites
+
+- **Firebase Blaze Plan**: To use this project, you'll need to enable the Firebase "Blaze" (pay-as-you-go) plan. This requires adding a billing account to your Firebase project, for which a credit card is mandatory.
 
 ## Minimum Technical Requirements
 
@@ -18,23 +22,29 @@ npm -v
 
 ## Getting Started
 
-1. **Clone the repository:**
+### Firebase Setup
 
-   ```bash
-   git clone https://github.com/your-username/arcticfox.git
-   cd arcticfox
-   ```
+1.  **Navigate to the Firebase Console:**
+    Open your web browser and go to [https://console.firebase.google.com/](https://console.firebase.google.com/).
 
-2. **Install dependencies:**
+2.  **Create a New Firebase Project:**
+    - Click on **"Add project"** to start the setup process.
+    - Enter a unique name for your project (e.g., `pennywise-2a`).
+    - Uncheck **"Enable Google Analytics for this project"** and click **"Create project"**.
 
-   ```bash
-   npm install
-   ```
+3.  **Access Your Project Dashboard:**
+    Once the project is created, you will be redirected to the project's dashboard.
+    ![Firebase Dashboard](pics/ss1.png)
 
-3. **Run the application:**
+4.  **Upgrade to the Blaze Plan:**
+    - By default, your project will be on the "Spark" plan. To enable all features required for PennyWise, you must upgrade to the "Blaze" (pay-as-you-go) plan.
+    - In the bottom-left corner of the navigation menu, click on the **"Upgrade"** button.
+    - Select the **Blaze plan** and follow the prompts to create a Cloud Billing account. This will require a credit card for verification, which may involve a small transaction (e.g., 2 rupees).
 
-   ```bash
-   npm start
-   ```
+5.  **Set a Billing Budget:**
+    - After setting up your billing account, you will be prompted to create a budget. It is highly recommended to set a budget to prevent unexpected charges.
+    - For example, you can set a monthly budget of ₹15.
+    - Once your budget is set, link the Cloud Billing account to your project.
+    ![Link Cloud Billing Account](pics/ss2.png)
 
-   This will start the development server and open the application in your default browser at `http://localhost:3000`.
+      
