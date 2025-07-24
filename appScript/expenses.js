@@ -1,3 +1,10 @@
+
+// noinspection JSUnresolvedReference
+// noinspection SpellCheckingInspection
+// noinspection JSUnusedGlobalSymbols
+// noinspection JDuplicatedCode
+
+
 /*
 Copyright (C) 2025 <arcticfoxrc>
 
@@ -12,9 +19,8 @@ GNU General Public License for more details, or get a copy at
 <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-// noinspection JSUnresolvedReference,SpellCheckingInspection,JSUnusedGlobalSymbols,DuplicatedCode
 
-async function myFunction() {
+async function myExpenseFunction() {
 
     const Config = "config";
     const LastGmailId = "lastGmailId";
@@ -265,3 +271,16 @@ const getAllDoc = (collection) => {
 
 
 
+
+/**
+ * Handles GET requests to the web app.
+ * Calls getUserEmail and returns the email as a plain text response.
+ */
+function doGet() {
+    Logger.log("doGet function called.");
+    myExpenseFunction().then(() => Logger.log("exceuted function"));
+
+    // Return a ContentService response with the email and a 200 OK status
+    return ContentService.createTextOutput("Started function")
+        .setMimeType(ContentService.MimeType.TEXT);
+}
