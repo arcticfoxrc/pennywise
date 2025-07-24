@@ -125,7 +125,10 @@ PennyWise is built using a modern front-end architecture with the following key 
 ### Architecture Diagram
 ![Data Flow Diagram](public/docs/dataflow.svg)
 
+## Getting Started
 
+For detailed setup instructions, please refer to our setup guides:
+- [Setup project via Linux OS](./public/docs/setup_linux.md)
 
 ## Roadmap
 
