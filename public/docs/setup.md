@@ -8,7 +8,7 @@ This guide will walk you through setting up the Arctic Fox project on a Linux en
   requires adding a billing account to your Firebase project, for which a credit card is mandatory.
 
 > **Note:** I have been using this project for tracking my expenses for the last 2 years, and I have rarely crossed the
-> free tier limits. On a few occasions, I was billed ₹1-2 when I was testing Firestore with a high volume of requests.
+> free tier limits. Occasionally, I was billed ₹1-2 when I was testing Firestore with a high volume of requests.
 > However, you can set up a billing budget to receive reminder emails, which helps ensure you stay within your desired
 > spending limits.
 
@@ -142,56 +142,44 @@ To interact with Firebase services from your terminal, you need to install the F
 
 ### AppScript Setup
 
-1. **Login to AppScript:**
-   Visit the [Google Apps Script](https://script.google.com/) website and log in with your Google account.
-   Go to settings > Google Apps Script API > Enable the option
-   This is necessary to create and manage your Apps Script projects.
+1.  **Log in with `clasp`:**
+    Run the following command to authorize `clasp` with your Google account:
+    ```bash
+    clasp login
+    ```
+    This will open a browser window. Log in to your Google account and grant the requested permissions.
 
-   ![Appscript1](pics/ss3.png)
+2.  **Navigate to the `appScript` Directory:**
+    Change your current directory to the `appScript` folder within the project:
+    ```bash
+    cd appScript
+    ```
 
-
-2. **Login via clasp:**
-   In your terminal, run:
-   ```bash
-   clasp login
-   ```
-   This will open a browser window for you to log in with your Google account. Select all for the permissions requested.
-
-
-3. **Go to the appScript directory:**
-   Navigate to the `appScript` directory in your project:
-   ```bash
-   cd appScript
-   ```
-4. **Delete existing clasp files:**
-   If you have an existing `.clasp.json` file, delete it to avoid conflicts:
-   ```bash
-   rm .clasp.json
-   ```
-
-5. **Create the AppScript Project:**
-   In your terminal, navigate to the directory where you want to clone the AppScript project and run:
+3.  **Create a New Apps Script Project:**
+    Run the following command to create a new, standalone Apps Script project:
     ```bash
     clasp create --title "Pennywise App Script" --type standalone
     ```
-6. **Push the Local Code to AppScript:**
-   After creating the project, you can push your local code to the Apps Script project:
+
+4.  **Push Local Code to Apps Script:**
+    To upload your local code to the newly created Apps Script project, run:
     ```bash
     clasp push
     ```
-7. **Deploy the AppScript Project:**
-   To deploy your Apps Script project, run:
-    ```bash
-    clasp deploy --description "pennywise v1"
-    ```
-   This will create a new deployment of your Apps Script project. you will output like below:
-   ```
-   Deployed AKfycbwKWtD4RpPUoUZuW4eF-l3-gUSxCmI95LFDD6Lea1KqgH0qZjfq-e-0C4u9bfcymLpztw @1
-   ```
-   note down the deployment ID (the part after `Deployed`), as you will need it later for future updates & deployments.
 
-   ** for future deployments, you can use the command below to update the existing deployment
-   ```bash
-   clasp deploy --deploymentId <DEPLOYMENT_ID_FROM_PREVIOUS_CMD> --description "pennywise v2"
+5.  **Deploy the Project:**
+    Deploy your project with the following command, adding a description for the version:
+    ```bash
+    clasp deploy --description "Initial deployment"
     ```
-   
+    You will see output similar to this:
+    ```
+    Deployed AKfycbwKWtD4RpPUoUZuW4eF-l3-gUSxCmI95LFDD6Lea1KqgH0qZjfq-e-0C4u9bfcymLpztw @1
+    ```
+    Copy the **Deployment ID** from the output, as you will need it for future updates.
+
+    > **Future Deployments:**
+    > To update an existing deployment, use the following command with your deployment ID:
+    > ```bash
+    > clasp deploy --deploymentId <YOUR_DEPLOYMENT_ID> --description "New version description"
+    > ```
