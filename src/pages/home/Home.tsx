@@ -27,7 +27,7 @@ import AddIcon from '@mui/icons-material/Add';
 import {Avatar, Chip, Fab, IconButton, InputAdornment, TextField, Zoom} from '@mui/material';
 import Fade from '@mui/material/Fade';
 import CircularProgress from '@mui/material/CircularProgress';
-import React, {FC, ReactElement, useEffect, useRef, useState} from "react";
+import React, {FC, ReactElement, useEffect, useRef, useState, useCallback} from "react";
 import {useSelector} from 'react-redux';
 import {Col, Row} from "reactstrap";
 import {Expense} from '../../Types';
@@ -157,10 +157,10 @@ const Home: FC<any> = (): ReactElement => {
   };
 
   // Cancel selection mode
-  const cancelSelection = () => {
+  const cancelSelection = useCallback(() => {
     setSelectedExpenses([]);
     setSelectionMode(false);
-  };
+  }, []);
 
   // Handle delete selected expenses
   const handleDeleteSelected = async () => {
@@ -297,7 +297,7 @@ const Home: FC<any> = (): ReactElement => {
     if (searchTerm && selectionMode) {
       cancelSelection();
     }
-  }, [searchTerm]);
+  }, [searchTerm, cancelSelection, selectionMode]);
 
   // Toggle collapse state for a group
   const toggleGroupCollapse = (groupKey: string) => {

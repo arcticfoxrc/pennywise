@@ -14,7 +14,6 @@ GNU General Public License for more details, or get a copy at
 
 import CircularProgress from '@mui/material/CircularProgress/CircularProgress';
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function Loading() {
 
