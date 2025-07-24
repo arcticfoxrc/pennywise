@@ -12,7 +12,7 @@ GNU General Public License for more details, or get a copy at
 <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState, useCallback} from 'react';
 import {Box, Button, Chip, Container, IconButton, Paper, Stack, Typography, useTheme} from '@mui/material';
 import {motion} from 'framer-motion';
 import {FileDownload, TrendingDown as TrendingDownIcon, TrendingUp as TrendingUpIcon} from '@mui/icons-material';
@@ -86,7 +86,9 @@ const Insights: React.FC = () => {
   }, []);
 
   // Filter expenses based on selected time range
-  const getFilteredExpenses = () => filterExpensesByDate(expenses, timeRange);
+  const getFilteredExpenses = useCallback(() =>
+    filterExpensesByDate(expenses, timeRange)
+  , [expenses, timeRange]);
 
   // Calculate total spending
   const getTotalSpending = () => {
@@ -184,12 +186,21 @@ const Insights: React.FC = () => {
     setShowGroupByOptions(false);
   };
 
+
   const handleCalculationChange = (option: CalculationOption) => {
     setSelectedCalculation(option);
     setShowGroupByOptions(false);
   };
 
-  const prepareChartData = (
+  // Helper function to determine cost range bucket
+  const getCostRange = useCallback((cost: number): string => {
+    if (cost <= 100) return '₹0-₹100';
+    if (cost <= 500) return '₹100-₹500';
+    if (cost <= 1000) return '₹500-₹1000';
+    return '₹1000+';
+  }, []);
+
+  const prepareChartData = useCallback((
     expenses: Expense[],
     groupBy: GroupByOption,
     calculation: CalculationOption
@@ -198,8 +209,6 @@ const Insights: React.FC = () => {
     pieChartData: { name: string; value: number }[];
     lineKeys: string[];
   } => {
-
-
     if (expenses.length === 0) {
       return {lineChartData: [], pieChartData: [], lineKeys: []};
     }
@@ -321,15 +330,7 @@ const Insights: React.FC = () => {
     });
 
     return {lineChartData: newLineChartData, pieChartData, lineKeys: topGroups};
-  };
-
-  // Helper function to determine cost range bucket
-  const getCostRange = (cost: number): string => {
-    if (cost <= 100) return '₹0-₹100';
-    if (cost <= 500) return '₹100-₹500';
-    if (cost <= 1000) return '₹500-₹1000';
-    return '₹1000+';
-  };
+  }, [getCostRange]);
 
   const [lineChartData, setLineChartData] = useState<LineDataPoint[]>([]);
   const [lineKeys, setLineKeys] = useState<string[]>([]);
@@ -347,7 +348,7 @@ const Insights: React.FC = () => {
     setLineChartData(lineChartData);
     setPieChartData(pieChartData);
     setLineKeys(lineKeys);
-  }, [expenses, timeRange, selectedGroupBy, selectedCalculation]);
+  }, [expenses, timeRange, selectedGroupBy, selectedCalculation, getFilteredExpenses, prepareChartData]);
 
   if (isLoading) {
     return <Loading/>;
