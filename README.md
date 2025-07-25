@@ -4,7 +4,7 @@
   <img src="public/logo2.png" alt="PennyFox Logo" width="150px" />
   <br />
   <br />
-  <strong>Track, Categorize, Analyze, and Master Your Personal Finances</strong>
+  <strong>Track, Analyze, and Master Your Personal Finances</strong>
 </div>
 
 <p align="center">
