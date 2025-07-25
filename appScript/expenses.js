@@ -20,6 +20,10 @@ GNU General Public License for more details, or get a copy at
 */
 
 
+const PROJECT_ID = 'finance-app-361514';
+const PROJECT_REGION = 'us-central1';
+
+
 async function myExpenseFunction() {
 
     const Config = "config";
@@ -159,7 +163,6 @@ async function myExpenseFunction() {
 
 
             await addExpense(expense);
-            isExpenseAdded = true;
 
 
             console.log('-> ', type, ' cost: ', expense.cost);
@@ -199,7 +202,7 @@ const getExpense = (date, type, mailId) => {
 
 const addExpense = async (expense) => {
 
-    const url = "https://us-central1-finance-app-361514.cloudfunctions.net/addExpenseData";
+    const url = `https://${PROJECT_REGION}-${PROJECT_ID}.cloudfunctions.net/addExpenseData`;
 
     const options = {
         "method": "post",
@@ -213,7 +216,8 @@ const addExpense = async (expense) => {
 
 
 const setOneDoc = (collection, key, value) => {
-    const url = "https://us-central1-finance-app-361514.cloudfunctions.net/setOneDoc";
+
+    const url = `https://${PROJECT_REGION}-${PROJECT_ID}.cloudfunctions.net/setOneDoc`;
 
     const data = {
         key,
@@ -233,7 +237,7 @@ const setOneDoc = (collection, key, value) => {
 
 
 const getOneDoc = (collection, key) => {
-    const url = "https://us-central1-finance-app-361514.cloudfunctions.net/getOneDoc";
+    const url = `https://${PROJECT_REGION}-${PROJECT_ID}.cloudfunctions.net/getOneDoc`;
 
     const data = {
         key,
@@ -252,7 +256,7 @@ const getOneDoc = (collection, key) => {
 
 
 const getAllDoc = (collection) => {
-    const url = "https://us-central1-finance-app-361514.cloudfunctions.net/getAllDoc";
+    const url = `https://${PROJECT_REGION}-${PROJECT_ID}.cloudfunctions.net/getAllDoc`;
 
     const data = {
         collection

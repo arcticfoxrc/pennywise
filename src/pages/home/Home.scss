@@ -419,12 +419,6 @@ GNU General Public License for more details, or get a copy at
     z-index: 90 !important;
     background-color: var(--accent-blue) !important;
     transition: background-color 0.3s ease, transform 0.3s ease !important;
-
-    &:hover {
-        background-color: var(--group-header-hover) !important;
-    }
-
-
 }
 
 /* Collapse all button */
@@ -436,10 +430,6 @@ GNU General Public License for more details, or get a copy at
     z-index: 90 !important;
     background-color: var(--accent-blue) !important;
     transition: background-color 0.3s ease, transform 0.3s ease !important;
-
-    //&:hover {
-    //    background-color: var(--group-header-hover) !important;
-    //}
 
     /* Add subtle pulse animation when state changes */
     &.state-changed {

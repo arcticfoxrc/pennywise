@@ -1,22 +1,28 @@
-export const getFirebaseConfig = () => null; // empty function to avoid errors in unused code
+export const firebaseConfig = () => null; // empty function to avoid errors in unused code
 
-// /*
-// Copyright (C) 2025 <arcticfoxrc>
-//
-// This program is free software; you can redistribute it and/or modify it
-// under the terms of the GNU General Public License as published by the
-// Free Software Foundation; version 3 of the License.
-//
-// This program is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details, or get a copy at
-// <https://www.gnu.org/licenses/gpl-3.0.txt>.
-// */
-//
+/*
+Copyright (C) 2025 <arcticfoxrc>
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; version 3 of the License.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details, or get a copy at
+<https://www.gnu.org/licenses/gpl-3.0.txt>.
+*/
+
+
+
+// This script is used to fetch expenses from Gmail and update the database locally.
+// you need to valid desktop service account credentials to make below code work.
+
+
 // import { initializeApp } from "firebase/app";
 // import { getFirestore } from "firebase/firestore/lite";
-// import { getFirebaseConfig } from "../src/firebase/firebase-public";
+// import { firebaseConfig } from "../src/firebase/firebase-public";
 // import { ExpenseAPI } from "../src/api/ExpenseAPI";
 //
 // const path = require('path');
@@ -36,7 +42,7 @@ export const getFirebaseConfig = () => null; // empty function to avoid errors i
 //
 //
 //
-// const firebaseConfig = getFirebaseConfig();
+// const firebaseConfig = firebaseConfig();
 //
 // const app = initializeApp(firebaseConfig);
 // const db = getFirestore(app);

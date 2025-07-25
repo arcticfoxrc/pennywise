@@ -117,8 +117,7 @@ const AutoTagExpenses: React.FC = () => {
         Auto-tag All Past Expenses
       </Typography>
       <Typography variant="body2" className="reload-warning-text">
-        This action will go through all past expenses and apply tags based on your vendor settings. This can be a
-        lengthy and data-intensive process.
+        This action will go through all past expenses and apply tags based on your vendor-tag mappings available in 'Manage Vendor Tags'.
       </Typography>
       <Button
         onClick={handleAutoTagAll}

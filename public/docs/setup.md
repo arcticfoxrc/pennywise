@@ -107,7 +107,7 @@ Here’s how you can install Node.js and npm on different operating systems. We 
 
 2. **Create a New Firebase Project:**
     - Click on **"Add project"** to start the setup process.
-    - Enter a unique name for your project (e.g., `pennywise-2a`).
+    - Enter a unique name for your project, this will be your project-id (e.g., `pennywise-2a`).
     - Uncheck **"Enable Google Analytics for this project"** and click **"Create project"**.
 
 3. **Access Your Project Dashboard:**
@@ -130,6 +130,33 @@ Here’s how you can install Node.js and npm on different operating systems. We 
 
 ![Link Cloud Billing Account](pics/ss2.png)
 
+6. **Enable Web App Configuration:**
+
+  - In the Firebase console, click on the **"+ Add app"** then web app icon to add a web app to your project.
+    
+
+![Create web app](pics/ss4.png)
+    
+  - click on web icon to add a web app to your project.
+
+![Create web app](pics/ss5.png)
+
+  - Enter a nickname for your app (e.g., `pennywise-2a`) and don't check the box to set up Firebase Hosting
+  - Click **"Register app"**.
+
+![Create web app](pics/ss6.png)
+
+  - After registering your app, you will see a configuration snippet. 
+  - Copy this snippet highlighted in blue in below screenshot.
+
+![Create web app](pics/ss7.png)
+
+- Paste content in the file `src/firebase/firebase-public.ts` & keep `export` word as it is.
+- This snippet contains your Firebase project's configuration details, which are essential for connecting your app to Firebase services.
+  paste `const firebaseConfig = { ... }` in file after the word `export `.
+
+![Create web app](pics/ss8.png)
+
 ### Install Firebase CLI
 
 To interact with Firebase services from your terminal, you need to install the Firebase CLI.
@@ -142,42 +169,76 @@ To interact with Firebase services from your terminal, you need to install the F
 
 ### Firestore Setup
 
+
+  - **Enable Firestore Rules:**
+    - Replace `firebase.rules` with the following rules to restrict access to your email,
+    - replace `your-email@gmail.com` with your actual email address.
+      ```txt
+      rules_version = '2';
+
+      service cloud.firestore {
+      match /databases/{database}/documents {
+    
+          function isMyEmail() {
+            // It's good practice to also check email_verified for stronger security
+            return request.auth.token.email == "your-email@gmail.com" && request.auth.token.email_verified == true;
+          }
+    
+          // This single rule applies to ALL documents in the database
+          // and grants read/write access ONLY if the user is authenticated
+          // and their email matches "your-email@gmail.com" AND it's verified.
+          match /{document=**} {
+            allow read, write: if request.auth != null && isMyEmail();
+          }
+      }
+        ```
+
 -  **Initialize Firestore:**
     ```bash
    firebase deploy --only firestore
    ```
-
+-  **Deploy Functions & Web Hosting:** you can deploy them with
+      ```bash
+      firebase deploy
+      ```
+   
 ### AppScript Setup
 
-1.  **Log in with `clasp`:**
+1. **Update Function URL:**
+   - Open the file `appScript/expenses.js`.
+   - Replace the `PROJECT_ID` with the project-id.
+   - This URL is typically in the format: `https://<region>-<project-id>.cloudfunctions.net/<function-name>`.
+   
+
+2. **Log in with `clasp`:**
     Run the following command to authorize `clasp` with your Google account:
     ```bash
     clasp login
     ```
     This will open a browser window. Log in to your Google account and grant the requested permissions.
 
-2.  **Navigate to the `appScript` Directory:**
+3. **Navigate to the `appScript` Directory:**
     Change your current directory to the `appScript` folder within the project:
     ```bash
     cd appScript
     ```
 
-3.  **Create a New Apps Script Project:**
+4. **Create a New Apps Script Project:**
     Run the following command to create a new, standalone Apps Script project:
     ```bash
     clasp create --title "Pennywise App Script" --type standalone
     ```
 
-4.  **Push Local Code to Apps Script:**
+5. **Push Local Code to Apps Script:**
     To upload your local code to the newly created Apps Script project, run:
     ```bash
     clasp push
     ```
 
-5.  **Deploy the Project:**
+6. **Deploy the Project:**
     Deploy your project with the following command, adding a description for the version:
     ```bash
-    clasp deploy --description "Initial deployment"
+    clasp deploy --description "pennywise v1"
     ```
     You will see output similar to this:
     ```
@@ -187,6 +248,7 @@ To interact with Firebase services from your terminal, you need to install the F
 
     > **Future Deployments:**
     > To update an existing deployment, use the following command with your deployment ID:
+    > in above output, `AKfycbwKWtD4RpPUoUZuW4eF-l3-gUSxCmI95LFDD6Lea1KqgH0qZjfq-e-0C4u9bfcymLpztw` is the deployment ID.
     > ```bash
-    > clasp deploy --deploymentId <YOUR_DEPLOYMENT_ID> --description "New version description"
+    > clasp deploy --deploymentId <YOUR_DEPLOYMENT_ID> --description "pennywise v2"
     > ```

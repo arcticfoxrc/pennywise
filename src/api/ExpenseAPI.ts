@@ -15,14 +15,12 @@ GNU General Public License for more details, or get a copy at
 import {initializeApp} from 'firebase/app';
 import {collection, deleteDoc, doc, getDoc, getDocs, getFirestore, query, setDoc, where} from 'firebase/firestore/lite';
 import {EXPENSE_LAST_UPDATE, TAG_LAST_UPDATE} from '../utility/constants';
-import {getFirebaseConfig} from '../firebase/firebase-public';
+import {firebaseConfig} from '../firebase/firebase-public';
 import {getDateJsIdFormat, getUnixTimestamp} from "../utility/utility";
 import {FinanceIndexDB} from './FinanceIndexDB';
 import {ErrorHandlers} from '../components/ErrorHandlers';
 import {BankConfig, Expense, VendorTag} from "../Types";
 
-
-const firebaseConfig = getFirebaseConfig();
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);

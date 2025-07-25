@@ -14,10 +14,10 @@ GNU General Public License for more details, or get a copy at
 
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirebaseConfig } from "./firebase-public";
+import { firebaseConfig } from "./firebase-public";
 
 // Initialize Firebase
-const app = initializeApp(getFirebaseConfig());
+const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Auth and get a reference to the service
 export const auth = getAuth(app);
