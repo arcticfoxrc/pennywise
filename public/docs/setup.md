@@ -1,4 +1,4 @@
-# PennyWise Setup for Linux
+# PennyFox Setup for Linux
 
 This guide will walk you through setting up the Arctic Fox project on a Linux environment.
 
@@ -98,6 +98,52 @@ Here’s how you can install Node.js and npm on different operating systems. We 
 
 </details>
 
+### Cloning the Project
+
+You can get the project files either by cloning the repository using Git or by downloading the source code as a ZIP file.
+
+- **With Git:**
+  ```bash
+  git clone https://github.com/your-username/penny-wise.git
+  ```
+- **Direct Download:**
+  Alternatively, you can download the project as a ZIP file from the repository's main page and extract it.
+
+After cloning or extracting the project, you need to open a terminal and navigate to the project's root directory.
+
+<details>
+<summary>Windows</summary>
+
+1.  **Open Terminal:** Right-click the Start button and select **Windows PowerShell** or **Command Prompt**.
+2.  **Navigate to Directory:** Use the `cd` command. For example, if the project is in your `Downloads` folder, run:
+    ```cmd
+    cd C:\\Users\\YourUsername\\Downloads\\penny-wise
+    ```
+
+</details>
+
+<details>
+<summary>macOS</summary>
+
+1.  **Open Terminal:** Find the Terminal app in `Applications/Utilities` or search for it with Spotlight (`Cmd+Space`).
+2.  **Navigate to Directory:** Use the `cd` command. For example:
+    ```bash
+    cd ~/Downloads/penny-wise
+    ```
+
+</details>
+
+<details>
+<summary>Linux</summary>
+
+1.  **Open Terminal:** Press `Ctrl+Alt+T` or search for "Terminal" in your applications menu.
+2.  **Navigate to Directory:** Use the `cd` command. For example:
+    ```bash
+    cd ~/Downloads/penny-wise
+    ```
+
+</details>
+
 ## Getting Started
 
 ### Firebase Setup
@@ -107,7 +153,7 @@ Here’s how you can install Node.js and npm on different operating systems. We 
 
 2. **Create a New Firebase Project:**
     - Click on **"Add project"** to start the setup process.
-    - Enter a unique name for your project, this will be your project-id (e.g., `pennywise-2a`).
+    - Enter a unique name for your project, this will be your project-id (e.g., `pennyfox-2a`).
     - Uncheck **"Enable Google Analytics for this project"** and click **"Create project"**.
 
 3. **Access Your Project Dashboard:**
@@ -116,7 +162,7 @@ Here’s how you can install Node.js and npm on different operating systems. We 
 ![Firebase Dashboard](pics/ss1.png)
 
 4. **Upgrade to the Blaze Plan:**
-    - By default, your project will be on the "Spark" plan. To enable all features required for PennyWise, you must
+    - By default, your project will be on the "Spark" plan. To enable all features required for PennyFox, you must
       upgrade to the "Blaze" (pay-as-you-go) plan.
     - In the bottom-left corner of the navigation menu, click on the **"Upgrade"** button.
     - Select the **Blaze plan** and follow the prompts to create a Cloud Billing account. This will require a credit
@@ -141,7 +187,7 @@ Here’s how you can install Node.js and npm on different operating systems. We 
 
 ![Create web app](pics/ss5.png)
 
-  - Enter a nickname for your app (e.g., `pennywise-2a`) and don't check the box to set up Firebase Hosting
+  - Enter a nickname for your app (e.g., `pennyfox-2a`) and don't check the box to set up Firebase Hosting
   - Click **"Register app"**.
 
 ![Create web app](pics/ss6.png)
@@ -226,7 +272,7 @@ To interact with Firebase services from your terminal, you need to install the F
 4. **Create a New Apps Script Project:**
     Run the following command to create a new, standalone Apps Script project:
     ```bash
-    clasp create --title "Pennywise App Script" --type standalone
+    clasp create --title "Pennyfox App Script" --type standalone
     ```
 
 5. **Push Local Code to Apps Script:**
@@ -238,7 +284,7 @@ To interact with Firebase services from your terminal, you need to install the F
 6. **Deploy the Project:**
     Deploy your project with the following command, adding a description for the version:
     ```bash
-    clasp deploy --description "pennywise v1"
+    clasp deploy --description "pennyfox v1"
     ```
     You will see output similar to this:
     ```
@@ -250,5 +296,5 @@ To interact with Firebase services from your terminal, you need to install the F
     > To update an existing deployment, use the following command with your deployment ID:
     > in above output, `AKfycbwKWtD4RpPUoUZuW4eF-l3-gUSxCmI95LFDD6Lea1KqgH0qZjfq-e-0C4u9bfcymLpztw` is the deployment ID.
     > ```bash
-    > clasp deploy --deploymentId <YOUR_DEPLOYMENT_ID> --description "pennywise v2"
+    > clasp deploy --deploymentId <YOUR_DEPLOYMENT_ID> --description "pennyfox v2"
     > ```

@@ -1,17 +1,10 @@
-# PennyWise: Personal Expense Tracker
-
-> **Disclaimer:** Currently, PennyWise only supports transaction tracking for below
-> * HDFC UPI credit & debit transactions.
-> * HDFC Credit card debit transactions.
->
-> We are actively working on expanding support to other banks and transaction types.
 
 <div align="center">
   <br/>
-  <img src="public/logo.png" alt="PennyWise Logo" width="150px" />
+  <img src="public/logo2.png" alt="PennyFox Logo" width="150px" />
   <br />
   <br />
-  <strong>Track, Analyze, and Master Your Personal Finances</strong>
+  <strong>Track, Categorize, Analyze, and Master Your Personal Finances</strong>
 </div>
 
 <p align="center">
@@ -20,10 +13,10 @@
   <a href="#features">Features</a> •
   <a href="#demo">Demo</a> •
   <a href="#technology-stack">Tech Stack</a> •
-  <a href="#architecture-how-it-works">Architecture & How It Works</a> •
+  <a href="#architecture">Architecture</a> •
   <a href="#project-structure">Project Structure</a> •
   <a href="#getting-started">Getting Started</a> •
-  <a href="#roadmap">Roadmap</a> •
+  <a href="#Future Roadmap">Future Roadmap</a> •
   <a href="#support-by-donating">Support by Donating</a> 
 </p>
 
@@ -33,10 +26,15 @@
 
 This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
+> **Disclaimer:** Currently, PennyFox only supports transaction tracking for below
+> * HDFC UPI - credit & debit transactions.
+> * HDFC Credit card - only debit transactions.
+>
+> We are actively working on expanding support to other banks email and transaction types.
 
 ## Overview
 
-PennyWise is a comprehensive, open-source web application designed to empower individuals in managing their personal finances. It provides an intuitive platform to track, categorize, and visualize expenses, helping users gain clear insights into their spending patterns and achieve financial mastery. Built with modern web technologies, PennyWise offers a user-friendly experience with robust features, including offline support and secure authentication.
+PennyFox is a comprehensive, open-source web application designed to empower individuals in managing their personal finances. It provides an intuitive platform to track, categorize, and visualize expenses, helping users gain clear insights into their spending patterns and achieve financial mastery. Built with modern web technologies, PennyFox offers a user-friendly experience with robust features, including offline support and secure authentication.
 
 ## Features
 
@@ -55,7 +53,7 @@ PennyWise is a comprehensive, open-source web application designed to empower in
 
 ## Technology Stack
 
-PennyWise leverages a modern and robust set of technologies to deliver a user friendly and maintainable application.
+PennyFox leverages a modern and robust set of technologies to deliver a user friendly and maintainable application.
 
 ### Frontend
 * **UI Framework**: [React](https://reactjs.org/)
@@ -82,7 +80,7 @@ PennyWise leverages a modern and robust set of technologies to deliver a user fr
 ## Project Structure
 
 ```
-pennywise/
+pennyfox/
 ├── public/               # Static assets
 ├── src/
 │   ├── api/              # API clients and data fetching
@@ -104,7 +102,7 @@ pennywise/
 
 ## Architecture
 
-PennyWise is built using a modern front-end architecture with the following key components:
+PennyFox is built using a modern front-end architecture with the following key components:
 
 
 ### Overview
@@ -123,15 +121,14 @@ PennyWise is built using a modern front-end architecture with the following key 
    - Data synchronization happens automatically when online
 
 ### Architecture Diagram
-![Data Flow Diagram](public/docs/dataflow.svg)
+![Architecture Diagram](public/docs/dataflow.svg)
 
 ## Getting Started
 
-For detailed setup instructions, please refer to our setup guide:
-- [Setup Instructions](./public/docs/setup.md)
+For detailed setup instructions, please refer to our [Setup Instructions](./public/docs/setup.md)
 
 
-## Roadmap
+## Future Roadmap
 
 - [ ] Multiple bank support (We need people to help us with this)
 - [ ] Enahncing Insights with more detailed analytics
