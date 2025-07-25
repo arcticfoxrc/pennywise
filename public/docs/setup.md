@@ -140,6 +140,13 @@ To interact with Firebase services from your terminal, you need to install the F
     npm install -g firebase-tools @google/clasp
     ```
 
+### Firestore Setup
+
+-  **Initialize Firestore:**
+    ```bash
+   firebase deploy --only firestore
+   ```
+
 ### AppScript Setup
 
 1.  **Log in with `clasp`:**
