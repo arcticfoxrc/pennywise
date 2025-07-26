@@ -179,7 +179,7 @@ After cloning or extracting the project, you need to open a terminal and navigat
 6. **Enable Web App Configuration:**
 
   - In the Firebase console, you will get 2 types of landing page
-  - First, if you get below, click on the **"+ Add app"** then web app icon to add a web app to your project.
+  - if you get below, click on the **"+ Add app"** then web app icon to add a web app to your project.
 
 
 ![Create web app](pics/ff1.png)
@@ -188,12 +188,12 @@ After cloning or extracting the project, you need to open a terminal and navigat
 
 ![Create web app](pics/ff3.png)
 
-  - Second, if you get below, click on the web app icon pointed in screenshot.
+  - if you get below, click on the web app icon pointed in screenshot.
 
 ![Create web app](pics/ff2.png)
 
-  - If you get below, click on the **"+ Add app"** then web app icon to add a web app to your project.
   - Enter a nickname for your app (e.g., `hello-2a`) and don't check the box to set up Firebase Hosting
+  - Firebase hosting required only if you want to use external bought domain, which is not required for this project.
   - Click **"Register app"**.
 
 ![Create web app](pics/ff4.png)
@@ -203,11 +203,22 @@ After cloning or extracting the project, you need to open a terminal and navigat
 
 ![Create web app](pics/ff5.png)
 
-- Paste content in the file `src/firebase/firebase-public.ts` & keep `export` word as it is.
-- This snippet contains your Firebase project's configuration details, which are essential for connecting your app to Firebase services.
-  paste `const firebaseConfig = { ... }` in file after the word `export `.
+- Create a `.env` file in the root folder of your project and paste the copied configuration snippet into it.
+- For React project, you can use the following format:
+  ```env
+  REACT_APP_FIREBASE_API_KEY=your-api-key
+  REACT_APP_FIREBASE_AUTH_DOMAIN=your-auth-domain
+  REACT_APP_FIREBASE_PROJECT_ID=your-project-id
+  REACT_APP_FIREBASE_STORAGE_BUCKET=your-storage-bucket
+  REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
+  REACT_APP_FIREBASE_APP_ID=your-app-id
+  
+  REACT_APP_FIREBASE_EMAIL=your-actual-mail@gmail.com
+  ```
+- Do replace `your-actual-mail@gmail.com` with your actual email address.
+- Final content should look like below
 
-![Create web app](pics/ff6.png)
+    ![Create web app](pics/ff9.png)
 
 7. **Enable Google Authentication:**
    - In the Firebase console, navigate to **Authentication** under `Build` in the left sidebar.
@@ -246,7 +257,7 @@ To interact with Firebase services from your terminal, you need to install the F
     
           // This single rule applies to ALL documents in the database
           // and grants read/write access ONLY if the user is authenticated
-          // and their email matches "your-email@gmail.com" AND it's verified.
+          // and their email matches to your mail AND it's verified.
           match /{document=**} {
             allow read, write: if request.auth != null && isMyEmail();
           }

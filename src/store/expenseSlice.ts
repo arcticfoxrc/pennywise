@@ -100,10 +100,10 @@ export const expenseSlice = createSlice({
             state.isTagModal = false;
         },
 
-        setExpenseState: (state, action: PayloadAction<{ expenseList: Expense[], vendorTagList: VendorTag[] , appConfig: AppConfig}>) => {
+        setExpenseState: (state, action: PayloadAction<{ expenseList: Expense[], vendorTagList: VendorTag[] , darkMode: boolean}>) => {
             state.expenseList = action.payload.expenseList;
             state.vendorTagList = action.payload.vendorTagList;
-            state.appConfig = action.payload.appConfig;
+            state.appConfig.darkMode = action.payload.darkMode;
             state.isAppLoading = false;
         },
 
