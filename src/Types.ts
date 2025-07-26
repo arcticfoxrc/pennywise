@@ -44,6 +44,7 @@ export type TagList = string[];
 export interface BankConfig {
     enableUpi: boolean;
     creditCards: string[];
+    projectId?: string;
 }
 
 
