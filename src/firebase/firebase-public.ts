@@ -12,6 +12,27 @@ GNU General Public License for more details, or get a copy at
 <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
+/*
+This file contains the Firebase configuration for the application.
+It uses environment variables to set the configuration values.
+
+This configuration is intended for client-side use in a React application,
+where Firebase services need to be initialized in the browser.
+These configuration values are considered public information and do not
+pose a security risk when exposed in client-side code.
+
+Firebase enforces security through:
+- Firebase Authentication rules
+- Firestore/Database security rules
+- Storage security rules
+- Project-level API restrictions
+
+For more information on Firebase configuration and security best practices:
+- https://firebase.google.com/docs/web/setup
+- https://firebase.google.com/docs/projects/api-keys
+- https://firebase.google.com/docs/rules
+*/
+
 export const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "",
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN || "",
@@ -21,4 +42,4 @@ export const firebaseConfig = {
     appId: process.env.REACT_APP_FIREBASE_APP_ID || ""
 }
 
-console.log("Firebase config loaded:", firebaseConfig);
+// console.log("Firebase config loaded:", firebaseConfig);

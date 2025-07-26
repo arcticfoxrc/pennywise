@@ -33,8 +33,6 @@ admin.initializeApp();
 const db = getFirestore(); // No need to pass 'app' here
 
 
-// Define the allowed email address for access
-const ALLOWED_EMAIL = "rushi743@gmail.com"; // <--- IMPORTANT: Replace with the actual allowed email
 
 // --- Keep your existing onRequest functions ---
 // For the 'onRequest' functions, the core logic of interacting with 'db'

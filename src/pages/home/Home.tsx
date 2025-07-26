@@ -260,6 +260,9 @@ const Home: FC<any> = (): ReactElement => {
     const filtered = filterExpensesByDate(expenseList, selectedRange);
     const sortedExpenses = sortByKeyDate(filtered, 'date');
     setDateFilteredExpenses(sortedExpenses);
+
+    console.log('Filtered Expenses:', sortedExpenses);
+
   }, [expenseList, selectedRange]);
 
   // Apply search filter after date filtering
