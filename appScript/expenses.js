@@ -20,7 +20,7 @@ GNU General Public License for more details, or get a copy at
 */
 
 
-const PROJECT_ID = 'finance-app-361514';
+const PROJECT_ID = 'finance-app-361514';  // Replace with your actual project ID
 const PROJECT_REGION = 'us-central1';
 
 

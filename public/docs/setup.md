@@ -153,7 +153,7 @@ After cloning or extracting the project, you need to open a terminal and navigat
 
 2. **Create a New Firebase Project:**
     - Click on **"Add project"** to start the setup process.
-    - Enter a unique name for your project, this will be your project-id (e.g., `pennyfox-2a`).
+    - Enter a unique name for your project, this will be your project-id (e.g., `hello-2a`).
     - Uncheck **"Enable Google Analytics for this project"** and click **"Create project"**.
 
 3. **Access Your Project Dashboard:**
@@ -178,30 +178,36 @@ After cloning or extracting the project, you need to open a terminal and navigat
 
 6. **Enable Web App Configuration:**
 
-  - In the Firebase console, click on the **"+ Add app"** then web app icon to add a web app to your project.
+  - In the Firebase console, you will get 2 types of landing page 
+  - First, if you get below, click on the **"+ Add app"** then web app icon to add a web app to your project.
     
 
-![Create web app](pics/ss4.png)
+![Create web app](pics/ff1.png)
     
   - click on web icon to add a web app to your project.
 
-![Create web app](pics/ss5.png)
+![Create web app](pics/ff3.png)
 
-  - Enter a nickname for your app (e.g., `pennyfox-2a`) and don't check the box to set up Firebase Hosting
+  - Second, if you get below, click on the web app icon pointed in screenshot.
+
+![Create web app](pics/ff2.png)
+
+  - If you get below, click on the **"+ Add app"** then web app icon to add a web app to your project.
+  - Enter a nickname for your app (e.g., `hello-2a`) and don't check the box to set up Firebase Hosting
   - Click **"Register app"**.
 
-![Create web app](pics/ss6.png)
+![Create web app](pics/ff4.png)
 
   - After registering your app, you will see a configuration snippet. 
   - Copy this snippet highlighted in blue in below screenshot.
 
-![Create web app](pics/ss7.png)
+![Create web app](pics/ff5.png)
 
 - Paste content in the file `src/firebase/firebase-public.ts` & keep `export` word as it is.
 - This snippet contains your Firebase project's configuration details, which are essential for connecting your app to Firebase services.
   paste `const firebaseConfig = { ... }` in file after the word `export `.
 
-![Create web app](pics/ss8.png)
+![Create web app](pics/ff6.png)
 
 ### Install Firebase CLI
 
@@ -217,7 +223,7 @@ To interact with Firebase services from your terminal, you need to install the F
 
 
   - **Enable Firestore Rules:**
-    - Replace `firebase.rules` with the following rules to restrict access to your email,
+    - Replace `firestore.rules` with the following rules to restrict access to your email,
     - replace `your-email@gmail.com` with your actual email address.
       ```txt
       rules_version = '2';
@@ -237,7 +243,34 @@ To interact with Firebase services from your terminal, you need to install the F
             allow read, write: if request.auth != null && isMyEmail();
           }
       }
-        ```
+        ``` 
+
+- **Update Mail in Functions:**
+    - Open the file `functions/index.js`.
+    - Replace the email `"your-mail@gmail.com"`  with your actual email address.
+    ```txt
+      // Define the allowed email address for access
+      const ALLOWED_EMAIL = "your-actual-email@gmail.com"; // <--- IMPORTANT: Replace with the actual allowed email
+    ```
+- ** Update Project ID in App Script:**
+    - Open the file `appScript/expenses.js`.
+    - Replace the `PROJECT_ID` with your actual Firebase project ID.
+    - This is typically in the format: `https://<region>-<project-id>.cloudfunctions.net/<function-name>`.
+    ```txt
+    const PROJECT_ID = 'dummy-id';  // Replace with your actual project ID  
+    ```
+- **Run NPM Install:**
+    - Run the following command to install all necessary dependencies:
+      ```bash
+      npm install
+      ```
+-  **Firebase Login:**
+    - Run the following command to log in to Firebase:
+      ```bash
+      firebase login
+      ```
+    - This will open a browser window for you to log in with your Google account.
+
 
 -  **Initialize Firestore:**
     ```bash
@@ -250,38 +283,32 @@ To interact with Firebase services from your terminal, you need to install the F
    
 ### AppScript Setup
 
-1. **Update Function URL:**
-   - Open the file `appScript/expenses.js`.
-   - Replace the `PROJECT_ID` with the project-id.
-   - This URL is typically in the format: `https://<region>-<project-id>.cloudfunctions.net/<function-name>`.
-   
-
-2. **Log in with `clasp`:**
+1. **Log in with `clasp`:**
     Run the following command to authorize `clasp` with your Google account:
     ```bash
     clasp login
     ```
     This will open a browser window. Log in to your Google account and grant the requested permissions.
 
-3. **Navigate to the `appScript` Directory:**
+2. **Navigate to the `appScript` Directory:**
     Change your current directory to the `appScript` folder within the project:
     ```bash
     cd appScript
     ```
 
-4. **Create a New Apps Script Project:**
+3. **Create a New Apps Script Project:**
     Run the following command to create a new, standalone Apps Script project:
     ```bash
     clasp create --title "Pennyfox App Script" --type standalone
     ```
 
-5. **Push Local Code to Apps Script:**
+4. **Push Local Code to Apps Script:**
     To upload your local code to the newly created Apps Script project, run:
     ```bash
     clasp push
     ```
 
-6. **Deploy the Project:**
+5. **Deploy the Project:**
     Deploy your project with the following command, adding a description for the version:
     ```bash
     clasp deploy --description "pennyfox v1"
