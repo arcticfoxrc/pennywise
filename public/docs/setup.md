@@ -178,12 +178,12 @@ After cloning or extracting the project, you need to open a terminal and navigat
 
 6. **Enable Web App Configuration:**
 
-  - In the Firebase console, you will get 2 types of landing page 
+  - In the Firebase console, you will get 2 types of landing page
   - First, if you get below, click on the **"+ Add app"** then web app icon to add a web app to your project.
-    
+
 
 ![Create web app](pics/ff1.png)
-    
+
   - click on web icon to add a web app to your project.
 
 ![Create web app](pics/ff3.png)
@@ -208,6 +208,14 @@ After cloning or extracting the project, you need to open a terminal and navigat
   paste `const firebaseConfig = { ... }` in file after the word `export `.
 
 ![Create web app](pics/ff6.png)
+
+7. **Enable Google Authentication:**
+   - In the Firebase console, navigate to **Authentication** under `Build` in the left sidebar.
+   - Click on the **"Get Started"** button if prompted.
+   - Under the **Sign-in method** tab, enable **Google** authentication.
+   - Click on **Save**. It should look like below screenshot.
+
+![Google auth](pics/ff8.png)
 
 ### Install Firebase CLI
 
@@ -243,7 +251,7 @@ To interact with Firebase services from your terminal, you need to install the F
             allow read, write: if request.auth != null && isMyEmail();
           }
       }
-        ``` 
+        ```
 
 - **Update Mail in Functions:**
     - Open the file `functions/index.js`.
@@ -252,13 +260,22 @@ To interact with Firebase services from your terminal, you need to install the F
       // Define the allowed email address for access
       const ALLOWED_EMAIL = "your-actual-email@gmail.com"; // <--- IMPORTANT: Replace with the actual allowed email
     ```
-- **Update Project ID in App Script:**
-    - Open the file `appScript/expenses.js`.
-    - Replace the `PROJECT_ID` with your actual Firebase project ID.
-    - This is typically in the format: `https://<region>-<project-id>.cloudfunctions.net/<function-name>`.
-    
-  ```txt
-    const PROJECT_ID = 'dummy-id';  // Replace with your actual project ID  
+  - **Update Project ID in App Script & Firebase config:**
+      - Open the file `appScript/expenses.js`.
+      - Replace the `PROJECT_ID` with your actual Firebase project ID.
+      - This is typically in the format: `https://<region>-<project-id>.cloudfunctions.net/<function-name>`.
+
+    ```txt
+      const PROJECT_ID = 'dummy-id';  // Replace with your actual project ID  
+      ```
+      - Open the file `.firebaserc`.
+      - Replace the `PROJECT_ID` with your actual Firebase project ID.
+    ```txt
+        {
+            "projects": {
+              "default": "hello-2a"  // Replace with your actual project ID
+            }
+        }
     ```
 - **Install npm dependency**
   Run the following command to install all necessary dependencies:
@@ -294,7 +311,7 @@ To interact with Firebase services from your terminal, you need to install the F
   ```
 
 - **Known Errors:**
-  - If you encounter an error like below, just take a break of 5-10 min 
+  - If you encounter an error like below, just take a break of 5-10 min
   - then run the same command again. `firebase deploy`
   - C'mon Google engineers, you can do better than just saying come back later
 
@@ -307,32 +324,39 @@ To interact with Firebase services from your terminal, you need to install the F
    
 ### AppScript Setup
 
-1. **Log in with `clasp`:**
+1. **Open AppScript Website:**
+   - Go to [Google Apps Script](https://script.google.com) in your web browser.
+   - Go to`Settings` and enable Google Apps Script API if it is not already enabled.
+
+   ![Google App Script](pics/ss3.png)
+
+2. **Log in with `clasp`:**
     Run the following command to authorize `clasp` with your Google account:
     ```bash
     clasp login
     ```
     This will open a browser window. Log in to your Google account and grant the requested permissions.
 
-2. **Navigate to the `appScript` Directory:**
+
+1. **Navigate to the `appScript` Directory:**
     Change your current directory to the `appScript` folder within the project:
     ```bash
     cd appScript
     ```
 
-3. **Create a New Apps Script Project:**
+2. **Create a New Apps Script Project:**
     Run the following command to create a new, standalone Apps Script project:
     ```bash
     clasp create --title "Pennyfox App Script" --type standalone
     ```
 
-4. **Push Local Code to Apps Script:**
+3. **Push Local Code to Apps Script:**
     To upload your local code to the newly created Apps Script project, run:
     ```bash
     clasp push
     ```
 
-5. **Deploy the Project:**
+4. **Deploy the Project:**
     Deploy your project with the following command, adding a description for the version:
     ```bash
     clasp deploy --description "pennyfox v1"

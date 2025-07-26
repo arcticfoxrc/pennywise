@@ -52,3 +52,7 @@ export interface Config {
     key: string,
     value: string | number
 }
+
+export interface AppConfig {
+    darkMode: boolean;
+}

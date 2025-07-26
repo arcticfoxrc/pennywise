@@ -13,7 +13,7 @@ GNU General Public License for more details, or get a copy at
 */
 
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {BankConfig, Expense, VendorTag} from "../Types";
+import {AppConfig, BankConfig, Expense, VendorTag} from "../Types";
 import {FinanceIndexDB} from "../api/FinanceIndexDB";
 
 
@@ -22,9 +22,7 @@ interface InitialState {
     expense: Expense | null,
     vendorTagList: VendorTag[],
     bankConfig: BankConfig,
-    appConfig: {
-        darkMode: boolean
-    },
+    appConfig: AppConfig,
     isAppLoading: boolean,
     isTagModal: boolean,
     tagList: string[],
@@ -102,10 +100,10 @@ export const expenseSlice = createSlice({
             state.isTagModal = false;
         },
 
-        setExpenseState: (state, action: PayloadAction<{ expenseList: Expense[], vendorTagList: VendorTag[] , darkMode: boolean}>) => {
+        setExpenseState: (state, action: PayloadAction<{ expenseList: Expense[], vendorTagList: VendorTag[] , appConfig: AppConfig}>) => {
             state.expenseList = action.payload.expenseList;
             state.vendorTagList = action.payload.vendorTagList;
-            state.appConfig.darkMode = action.payload.darkMode;
+            state.appConfig = action.payload.appConfig;
             state.isAppLoading = false;
         },
 
