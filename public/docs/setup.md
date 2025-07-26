@@ -252,34 +252,58 @@ To interact with Firebase services from your terminal, you need to install the F
       // Define the allowed email address for access
       const ALLOWED_EMAIL = "your-actual-email@gmail.com"; // <--- IMPORTANT: Replace with the actual allowed email
     ```
-- ** Update Project ID in App Script:**
+- **Update Project ID in App Script:**
     - Open the file `appScript/expenses.js`.
     - Replace the `PROJECT_ID` with your actual Firebase project ID.
     - This is typically in the format: `https://<region>-<project-id>.cloudfunctions.net/<function-name>`.
-    ```txt
+    
+  ```txt
     const PROJECT_ID = 'dummy-id';  // Replace with your actual project ID  
     ```
-- **Run NPM Install:**
-    - Run the following command to install all necessary dependencies:
-      ```bash
-      npm install
-      ```
+- **Install npm dependency**
+  Run the following command to install all necessary dependencies:
+  ```bash
+  npm install
+  ```
+
+- **Build web app:**
+  Run the following command to build the web app:
+  ```bash
+  npm run build
+  ```
+  
 -  **Firebase Login:**
-    - Run the following command to log in to Firebase:
+   Run the following command to log in to Firebase:
       ```bash
       firebase login
       ```
-    - This will open a browser window for you to log in with your Google account.
+   - This will open a browser window for you to log in with your Google account.
 
 
 -  **Initialize Firestore:**
-    ```bash
+    - you will se few warning saying API is not enabled, but ignore them
+    - firebase will enable them on behalf of you during the first deploy
+   ```bash
    firebase deploy --only firestore
    ```
--  **Deploy Functions & Web Hosting:** you can deploy them with
-      ```bash
-      firebase deploy
-      ```
+   
+- **Artifact Storage:**
+  - If you get below question, just enter 1 as backup days & Enter
+  ```txt
+  ✔ How many days do you want to keep container images before they're deleted?
+  ```
+
+- **Known Errors:**
+  - If you encounter an error like below, just take a break of 5-10 min 
+  - then run the same command again. `firebase deploy`
+  - C'mon Google engineers, you can do better than just saying come back later
+
+![Google error](pics/ff7.png)
+
+- **Deploy Functions & Web Hosting:** you can deploy them with
+  ```bash
+  firebase deploy
+  ```
    
 ### AppScript Setup
 

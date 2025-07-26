@@ -10,7 +10,7 @@ service cloud.firestore {
 
     // This single rule applies to ALL documents in the database
     // and grants read/write access ONLY if the user is authenticated
-    // and their email matches "your-email@gmail.com" AND it's verified.
+    // and their email matches AND it's verified.
     match /{document=**} {
       allow read, write: if request.auth != null && isMyEmail();
     }
